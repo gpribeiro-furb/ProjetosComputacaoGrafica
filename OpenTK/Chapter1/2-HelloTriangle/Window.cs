@@ -17,9 +17,11 @@ namespace LearnOpenTK
         // OpenGL only supports rendering in 3D, so to create a flat triangle, the Z coordinate will be kept as 0.
         private readonly float[] _vertices =
         {
-            -0.5f, -0.5f, 0.0f, // Bottom-left vertex
-             0.5f, -0.5f, 0.0f, // Bottom-right vertex
-             0.0f,  0.5f, 0.0f  // Top vertex
+            // First triangle
+            -0.5f, -0.5f, 0.0f, 
+            0.5f, -0.5f, 0.0f, 
+            0.5f, 0.5f, 0.0f, 
+            -0.5f, 0.5f, 0.0f, 
         };
 
         // These are the handles to OpenGL objects. A handle is an integer representing where the object lives on the
@@ -50,7 +52,7 @@ namespace LearnOpenTK
             // Normalized colors are mapped on a range of 0.0 to 1.0, with 0.0 representing black, and 1.0 representing
             // the largest possible value for that channel.
             // This is a deep green.
-            GL.ClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+            GL.ClearColor(0.698f, 0.392f, 0.18f, 1.0f);
 
             // We need to send our vertices over to the graphics card so OpenGL can use them.
             // To do this, we need to create what's called a Vertex Buffer Object (VBO).
@@ -153,7 +155,7 @@ namespace LearnOpenTK
             //     is some variant of a triangle. Since we just want a single triangle, we use Triangles.
             //   Starting index; this is just the start of the data you want to draw. 0 here.
             //   How many vertices you want to draw. 3 for a triangle.
-            GL.DrawArrays(PrimitiveType.Triangles, 0, 3);
+            GL.DrawArrays(PrimitiveType.Quads, 0, 4);
 
             // OpenTK windows are what's known as "double-buffered". In essence, the window manages two buffers.
             // One is rendered to while the other is currently displayed by the window.
